@@ -1,0 +1,37 @@
+{
+  "name": "autoplay-whitelist",
+  "version": "1.0.0",
+  "description": "C++ autoplay whitelist parser for Brave",
+  "main": "./build/Release/aw_node_addon",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "build": "make",
+    "check-security": "npm audit",
+    "checks": "npm run check-security",
+    "install": "node-gyp rebuild",
+    "preinstall": "npm install hashset-cpp && npm install cppunitlite",
+    "data-files": "node ./scripts/genDataFile.js",
+    "test": "node ./scripts/read_data.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brave/autoplay-whitelist.git"
+  },
+  "author": "Mark Pilgrim <mpilgrim@brave.com>",
+  "license": "MPL-2.0",
+  "gypfile": true,
+  "bugs": {
+    "url": "https://github.com/brave/autoplay-whitelist/issues"
+  },
+  "homepage": "https://github.com/brave/autoplay-whitelist#readme",
+  "dependencies": {
+    "cppunitlite": "^1.0.0",
+    "hashset-cpp": "^2.1.0",
+    "mkdirp": "^0.5.1",
+    "nan": "^2.10.0",
+    "node-gyp": "^3.8.0"
+  },
+  "devDependencies": {}
+}
