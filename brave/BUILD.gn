@@ -1,0 +1,28 @@
+if (is_android) {
+  import("//build/config/android/rules.gni")
+  dep_base = rebase_path("./", "//")
+} else {
+  dep_base = rebase_path("../..", "//")
+}
+
+config("external_config") {
+  include_dirs = [ ".." ]
+}
+
+config("internal_config") {
+}
+
+source_set("autoplay-whitelist") {
+  public_configs = [ ":external_config" ]
+  configs += [ ":internal_config" ]
+  sources = [
+    "../autoplay_whitelist_parser.cc",
+    "../autoplay_whitelist_parser.h",
+    "../autoplay_whitelist_data.cc",
+    "../autoplay_whitelist_data.h",
+  ]
+
+  deps = [
+    rebase_path("hashset-cpp/brave:hashset-cpp", dep_base),
+  ]
+}
