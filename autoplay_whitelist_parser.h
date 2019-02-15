@@ -9,6 +9,9 @@
 
 #include "autoplay_whitelist_data.h"
 
+#define AUTOPLAY_DAT_FILE "AutoplayWhitelist.dat"
+#define AUTOPLAY_DAT_FILE_VERSION "1"
+
 template<class T>
 class HashSet;
 
@@ -29,8 +32,6 @@ public:
   bool deserialize(char *buffer);
 
 private:
-  bool exists(const char *partialHost);
-
   std::unique_ptr<HashSet<ST_AUTOPLAY_WHITELIST_DATA> > mHosts;
 };
 

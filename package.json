@@ -7,13 +7,10 @@
     "test": "test"
   },
   "scripts": {
-    "build": "make",
-    "check-security": "npm audit",
-    "checks": "npm run check-security",
     "install": "node-gyp rebuild",
-    "preinstall": "npm install hashset-cpp && npm install cppunitlite",
-    "data-files": "node ./scripts/genDataFile.js",
-    "test": "node ./scripts/read_data.js"
+    "preinstall": "npm install hashset-cpp",
+    "data-files": "node ./scripts/gen_data_file.js",
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -27,11 +24,10 @@
   },
   "homepage": "https://github.com/brave/autoplay-whitelist#readme",
   "dependencies": {
-    "cppunitlite": "^1.0.0",
     "hashset-cpp": "^2.1.0",
-    "mkdirp": "^0.5.1",
-    "nan": "^2.10.0",
     "node-gyp": "^3.8.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "mocha": "^5.2.0"
+  }
 }

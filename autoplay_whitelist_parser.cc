@@ -24,48 +24,11 @@ void AutoplayWhitelistParser::addHost(const char *inputHost) {
 }
 
 bool AutoplayWhitelistParser::matchesHost(const char *inputHost) {
-  bool exist = exists(inputHost);
-  if (!exist) {
-    unsigned int len = (unsigned int)strlen(inputHost);
-    unsigned positionToStart = 0;
-    do {
-      unsigned int firstDotPos = positionToStart;
-      while (firstDotPos < len) {
-        if ('.' == inputHost[firstDotPos]) {
-          break;
-        }
-        firstDotPos++;
-      }
-      if (firstDotPos >= len || '.' != inputHost[firstDotPos]) {
-        break;
-      }
-      unsigned int secondDotPos = firstDotPos + 1;
-      while (secondDotPos < len) {
-        if ('.' == inputHost[secondDotPos]) {
-          break;
-        }
-        secondDotPos++;
-      }
-      if (secondDotPos >= len || '.' != inputHost[secondDotPos]) {
-        break;
-      }
-      exist = exists(inputHost + firstDotPos + 1);
-      if (exist) {
-        break;
-      }
-      positionToStart = firstDotPos + 1;
-    } while (true);
-  }
-
-  return exist;
-}
-
-bool AutoplayWhitelistParser::exists(const char *partialHost) {
   ST_AUTOPLAY_WHITELIST_DATA hostData;
-  hostData.sHost = new char[strlen(partialHost) + 1];
+  hostData.sHost = new char[strlen(inputHost) + 1];
   if (nullptr == hostData.sHost)
     return false;
-  strcpy(hostData.sHost, partialHost);
+  strcpy(hostData.sHost, inputHost);
   return mHosts->Exists(hostData);
 }
 
