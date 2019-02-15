@@ -29,8 +29,6 @@ public:
   bool deserialize(char *buffer);
 
 private:
-  bool exists(const char *partialHost);
-
   std::unique_ptr<HashSet<ST_AUTOPLAY_WHITELIST_DATA> > mHosts;
 };
 
