@@ -24,10 +24,10 @@
   },
   "homepage": "https://github.com/brave/autoplay-whitelist#readme",
   "dependencies": {
+    "hashset-cpp": "^2.1.0",
     "node-gyp": "^3.8.0"
   },
   "devDependencies": {
-    "hashset-cpp": "^2.1.0",
     "mocha": "^5.2.0"
   }
 }
