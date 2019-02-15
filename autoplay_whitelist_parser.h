@@ -9,6 +9,9 @@
 
 #include "autoplay_whitelist_data.h"
 
+#define DAT_FILE "AutoplayWhitelist.dat"
+#define DAT_FILE_VERSION "1"
+
 template<class T>
 class HashSet;
 
