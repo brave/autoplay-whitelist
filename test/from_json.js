@@ -25,6 +25,9 @@ describe('Client populated from autoplay.json', function() {
     it('should match known host cheddar.com', function() {
         assert(this.addon.matchesHost("cheddar.com"));
     })
+    it('should match known host ellentube.com', function() {
+        assert(this.addon.matchesHost("ellentube.com"));
+    })
     it('should not match unknown host a.com', function() {
         assert.equal(this.addon.matchesHost("a.com"), false);
     })
