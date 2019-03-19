@@ -20,7 +20,7 @@ describe('Client populated from deserialized data', function() {
         assert(this.addon2.matchesHost("example.com"));
     })
     it('should match known host youtube.com', function() {
-        assert(this.addon2.matchesHost("brave.com"));
+        assert(this.addon2.matchesHost("youtube.com"));
     })
     it('should match known host brave.com', function() {
         assert(this.addon2.matchesHost("brave.com"));
