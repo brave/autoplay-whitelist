@@ -25,7 +25,7 @@
   "homepage": "https://github.com/brave/autoplay-whitelist#readme",
   "dependencies": {
     "hashset-cpp": "^2.1.0",
-    "node-gyp": "github:brave/node-gyp"
+    "node-gyp": "^3.8.0"
   },
   "devDependencies": {
     "mocha": "^5.2.0"
