@@ -37,7 +37,7 @@
         "autoplay_whitelist_data.cc",
         "autoplay_whitelist_data.h",
         "./node_addon/AWParserWrap.h",
-        "./node_addon/AWParserWrap.cpp",
+        "./node_addon/AWParserWrap.cc",
         "./node_addon/addon.cpp",
         "./node_modules/hashset-cpp/test/hashFn.cc",
         "./node_modules/hashset-cpp/test/hashFn.h"
