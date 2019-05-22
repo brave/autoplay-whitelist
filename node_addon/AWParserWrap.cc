@@ -21,6 +21,7 @@ namespace AWParserWrap {
     using v8::Boolean;
     using v8::Value;
     using v8::Exception;
+    using v8::NewStringType;
 
     char *deserializedData = nullptr;
 
@@ -37,7 +38,7 @@ namespace AWParserWrap {
 
         // Prepare constructor template
         Local<FunctionTemplate> tpl = FunctionTemplate::New(isolate, New);
-        tpl->SetClassName(String::NewFromUtf8(isolate, "CAWParser"));
+        tpl->SetClassName(String::NewFromUtf8(isolate, "CAWParser", NewStringType::kNormal).ToLocalChecked());
         tpl->InstanceTemplate()->SetInternalFieldCount(1);
 
         NODE_SET_PROTOTYPE_METHOD(tpl, "addHost", CAWParserWrap::AddHost);
@@ -46,9 +47,9 @@ namespace AWParserWrap {
         NODE_SET_PROTOTYPE_METHOD(tpl, "deserialize", CAWParserWrap::Deserialize);
         NODE_SET_PROTOTYPE_METHOD(tpl, "cleanup", CAWParserWrap::Cleanup);
 
-        constructor.Reset(isolate, tpl->GetFunction());
-        exports->Set(String::NewFromUtf8(isolate, "CAWParser"),
-                     tpl->GetFunction());
+        constructor.Reset(isolate, tpl->GetFunction(isolate->GetCurrentContext()).ToLocalChecked());
+        exports->Set(String::NewFromUtf8(isolate, "CAWParser", NewStringType::kNormal).ToLocalChecked(),
+                     tpl->GetFunction(isolate->GetCurrentContext()).ToLocalChecked());
     }
 
     void CAWParserWrap::New(const FunctionCallbackInfo<Value>& args) {
@@ -75,17 +76,17 @@ namespace AWParserWrap {
         Isolate* isolate = args.GetIsolate();
         if (args.Length() != 1) {
             isolate->ThrowException(Exception::TypeError(
-                                                         String::NewFromUtf8(isolate, "Wrong number of arguments")));
+                                                         String::NewFromUtf8(isolate, "Wrong number of arguments", NewStringType::kNormal).ToLocalChecked()));
             return;
         }
 
         if (!args[0]->IsString()) {
             isolate->ThrowException(Exception::TypeError(
-                                                         String::NewFromUtf8(isolate, "Wrong arguments")));
+                                                         String::NewFromUtf8(isolate, "Wrong arguments", NewStringType::kNormal).ToLocalChecked()));
             return;
         }
 
-        String::Utf8Value str(isolate, args[0]->ToString());
+        String::Utf8Value str(isolate, args[0]->ToString(isolate->GetCurrentContext()).FromMaybe(Local<String>()));
         const char * buffer = *str;
 
         CAWParserWrap* obj = ObjectWrap::Unwrap<CAWParserWrap>(args.Holder());
@@ -96,17 +97,17 @@ namespace AWParserWrap {
         Isolate* isolate = args.GetIsolate();
         if (args.Length() != 1) {
             isolate->ThrowException(Exception::TypeError(
-                                                         String::NewFromUtf8(isolate, "Wrong number of arguments")));
+                                                         String::NewFromUtf8(isolate, "Wrong number of arguments", NewStringType::kNormal).ToLocalChecked()));
             return;
         }
 
         if (!args[0]->IsString()) {
             isolate->ThrowException(Exception::TypeError(
-                                                         String::NewFromUtf8(isolate, "Wrong arguments")));
+                                                         String::NewFromUtf8(isolate, "Wrong arguments", NewStringType::kNormal).ToLocalChecked()));
             return;
         }
 
-        String::Utf8Value strHost(isolate, args[0]->ToString());
+        String::Utf8Value strHost(isolate, args[0]->ToString(isolate->GetCurrentContext()).FromMaybe(Local<String>()));
         const char * bufferHost = *strHost;
 
         CAWParserWrap* obj = ObjectWrap::Unwrap<CAWParserWrap>(args.Holder());
@@ -123,7 +124,7 @@ namespace AWParserWrap {
         char* data = obj->serialize(&totalSize);
         if (nullptr == data) {
             isolate->ThrowException(Exception::TypeError(
-                                                         String::NewFromUtf8(isolate, "Could not serialize")));
+                                                         String::NewFromUtf8(isolate, "Could not serialize", NewStringType::kNormal).ToLocalChecked()));
             return;
         }
 
@@ -131,7 +132,7 @@ namespace AWParserWrap {
         Local<Object> localBuffer;
         if (!buffer.ToLocal(&localBuffer)) {
             isolate->ThrowException(Exception::TypeError(
-                                                         String::NewFromUtf8(isolate, "Could not convert MaybeLocal to Local")));
+                                                         String::NewFromUtf8(isolate, "Could not convert MaybeLocal to Local", NewStringType::kNormal).ToLocalChecked()));
             return;
         }
         ::memcpy(node::Buffer::Data(localBuffer), data, totalSize);
@@ -145,7 +146,7 @@ namespace AWParserWrap {
         Isolate* isolate = args.GetIsolate();
         if (args.Length() < 1) {
             isolate->ThrowException(Exception::TypeError(
-                                                         String::NewFromUtf8(isolate, "Wrong number of arguments")));
+                                                         String::NewFromUtf8(isolate, "Wrong number of arguments", NewStringType::kNormal).ToLocalChecked()));
             return;
         }
 
