@@ -54,6 +54,10 @@ char* AutoplayWhitelistParser::serialize(unsigned int* totalSize) {
   return result;
 }
 
+bool AutoplayWhitelistParser::deserialize(char *buffer, size_t) {
+  return deserialize(buffer);
+}
+
 bool AutoplayWhitelistParser::deserialize(char *buffer) {
   if (!buffer)
     return false;
