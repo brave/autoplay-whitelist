@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 #include "./autoplay_whitelist_data.h"
-#include "test/hashFn.h"
+#include "hashFn.h"
 
 static HashFn sHashFn(19);
 

@@ -39,8 +39,8 @@
         "./node_addon/AWParserWrap.h",
         "./node_addon/AWParserWrap.cc",
         "./node_addon/addon.cpp",
-        "./node_modules/hashset-cpp/test/hashFn.cc",
-        "./node_modules/hashset-cpp/test/hashFn.h"
+        "./node_modules/hashset-cpp/hashFn.cc",
+        "./node_modules/hashset-cpp/hashFn.h"
       ],
       "include_dirs": [
         ".",

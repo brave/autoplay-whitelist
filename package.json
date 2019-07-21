@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/brave/autoplay-whitelist#readme",
   "dependencies": {
-    "hashset-cpp": "^2.1.1",
+    "hashset-cpp": "^2.2.0",
     "node-gyp": "^4.0.0",
     "semver": "^6.0.0"
   },
