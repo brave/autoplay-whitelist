@@ -2,12 +2,6 @@
 
 C++ autoplay whitelist parser for Brave
 
-## Setup
-
-```
-npm install --save autoplay-whitelist
-```
-
 ## Installation
 
 1. Clone the git repository from GitHub:
