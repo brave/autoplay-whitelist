@@ -48,7 +48,8 @@ namespace AWParserWrap {
         NODE_SET_PROTOTYPE_METHOD(tpl, "cleanup", CAWParserWrap::Cleanup);
 
         constructor.Reset(isolate, tpl->GetFunction(isolate->GetCurrentContext()).ToLocalChecked());
-        exports->Set(String::NewFromUtf8(isolate, "CAWParser", NewStringType::kNormal).ToLocalChecked(),
+        exports->Set(isolate->GetCurrentContext(),
+                     String::NewFromUtf8(isolate, "CAWParser", NewStringType::kNormal).ToLocalChecked(),
                      tpl->GetFunction(isolate->GetCurrentContext()).ToLocalChecked());
     }
 
