@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/brave/autoplay-whitelist#readme",
   "dependencies": {
-    "hashset-cpp": "github:bbondy/hashset-cpp#e283e264477c68227bb394ff8eaa7dd44d57578f",
+    "hashset-cpp": "github:bbondy/hashset-cpp",
     "minimist": "^1.2.5",
     "mkdirp": "^1.0.3",
     "node-gyp": "^5.0.3"
